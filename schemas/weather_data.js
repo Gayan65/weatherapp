@@ -6,4 +6,4 @@ const weatherSchema = new mongoose.Schema({
     createDate: Date,
 });
 
-export const User = mongoose.model("Weather", weatherSchema);
+export const Weather = mongoose.model("Weather", weatherSchema);

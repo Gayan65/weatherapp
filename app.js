@@ -1,5 +1,6 @@
 import express from "express";
 import "dotenv/config";
+import weather_router from "./routes/weather_data.js";
 
 const app = express();
 const port = process.env.PORT;

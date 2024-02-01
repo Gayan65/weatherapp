@@ -2,7 +2,7 @@ import express from "express";
 import { Weather } from "../schemas/weather_data.js";
 
 const weather_router = express();
-weather_router.use(bodyParser.urlencoded({ extended: false }));
+//weather_router.use(bodyParser.urlencoded({ extended: false }));
 
 //API for the weather data create
 weather_router.get("/weather", async (req, res) => {
