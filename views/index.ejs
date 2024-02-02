@@ -6,6 +6,21 @@
         <title>Weather Warrior</title>
     </head>
     <body>
-        <h1><%= name %></h1>
+        <% if (locals.weather_history) { %>
+        <h1>Live</h1>
+        <h2>Temperature <%= temp_live %> and Humidity <%= humidity_live %></h2>
+
+        <h1>History</h1>
+        <ul>
+            <% weather_history.map(function(item) { %>
+            <li>
+                <%= item.temperature %>, <%= item.humidity %>, <%=
+                item.createDate %>
+            </li>
+            <% }); %>
+        </ul>
+        <% } else { %>
+        <p>Nothing to display.</p>
+        <% } %>
     </body>
 </html>

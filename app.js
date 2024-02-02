@@ -15,9 +15,11 @@ app.use(mqttMiddleware);
 
 app.get("/", async (req, res) => {
     await axios.get(`http://localhost:${port}/weather/all`).then((response) => {
+        const { weather } = response.data;
         res.render("index.ejs", {
-            name: response.data.weather[response.data.weather.length - 1]
-                .temperature,
+            temp_live: weather[weather.length - 1].temperature,
+            humidity_live: weather[weather.length - 1].humidity,
+            weather_history: weather,
         });
     });
 });
