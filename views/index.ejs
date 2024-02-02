@@ -12,26 +12,66 @@
         />
     </head>
     <body>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Weather Warrior</span>
+            </div>
+        </nav>
+
         <% if (locals.weather_history) { %>
-        <h1>Live</h1>
-        <h2>Temperature <%= temp_live %> and Humidity <%= humidity_live %></h2>
 
-        <h1>History</h1>
-        <ul>
-            <% weather_history.map(function(item) { %>
-            <li>
-                <%= item.temperature %>, <%= item.humidity %>, <%=
-                item.createDate %>
-            </li>
-            <% }); %>
-        </ul>
-        <% } else { %>
-        <p>Nothing to display.</p>
-        <% } %>
-
-        <div>
-            <button onclick="update()">Update</button>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold text-body-emphasis">
+                Latest update on <%= date_live %>
+            </h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">
+                    The temperature is <%= temp_live %> celsius and the humidity
+                    is <%= humidity_live %> percent.
+                </p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-lg px-4 gap-3"
+                        onclick="update()"
+                    >
+                        Update
+                    </button>
+                </div>
+            </div>
         </div>
+        <div
+            class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center"
+        >
+            <ul class="list-group">
+                <% weather_history.map(function(item) { %>
+                <li
+                    class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                >
+ 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+                    <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">Temperature is <%= item.temperature %> celsius</h6>
+                            <p class="mb-0 opacity-75">Humidity is <%= item.humidity %> percent</p>
+                        </div>
+                        <small class="opacity-50 text-nowrap"><%=
+                            item.createDate %></small>
+                    </div>
+                </li>
+                <% }); %>
+            </ul>
+            <% } else { %>
+                <p>Nothing to display.</p>
+                <% } %>
+        </div>
+        <ul>
+
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
