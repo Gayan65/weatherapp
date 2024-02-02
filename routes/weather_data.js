@@ -9,16 +9,23 @@ weather_router.use(bodyParser.json());
 //API for the weather data create
 weather_router.post("/weather/create", async (req, res) => {
     const mqttMessage = req.body.message;
-    //Try to convert the JSON OBJ to JS OBJ
+
     try {
+        //Create current date and time
+        var currentDateAndTime = new Date();
+
+        var formattedDateAndTime =
+            currentDateAndTime.toLocaleDateString() +
+            " " +
+            currentDateAndTime.toLocaleTimeString();
+        //Try to convert the JSON OBJ to JS OBJ
         var jsObject = JSON.parse(mqttMessage);
-        //console.log("Parsed JavaScript Object:", jsObject);
         console.log("Data from mqtt received successfully to create api");
         const { temperature, humidity } = jsObject;
         const weather = new Weather({
             temperature: temperature,
             humidity: humidity,
-            //createDate: dateAndTime,
+            createDate: formattedDateAndTime,
         });
 
         try {
