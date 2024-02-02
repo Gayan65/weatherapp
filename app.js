@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 //SERVER AND DB CONNECTION
-await mongoose.connect(urlDB).then(() => {
+await mongoose.connect("mongodb://127.0.0.1:27017/weatherDB").then(() => {
     console.log("DB Connected!");
     app.listen(port, () => {
         console.log(`Server running in port : ${port}`);

@@ -8,7 +8,8 @@ weather_router.use(bodyParser.json());
 
 //API for the weather data create
 weather_router.post("/weather/create", async (req, res) => {
-    console.log(req.body.message);
+    const mqttMessage = req.body.message;
+    console.log(mqttMessage);
     console.log("Data from mqtt received successfully to create api");
 
     /*
