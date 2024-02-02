@@ -30,7 +30,7 @@ function saveMessageToApi(message) {
     axios
         .post(`http://localhost:${port}/weather/create`, { message })
         .then((response) => {
-            console.log(response.data);
+            //console.log(response.data);
         })
         .catch((error) => {
             console.error("Error saving message:", error.message);
