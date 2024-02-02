@@ -1,12 +1,14 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { Weather } from "../schemas/weather_data.js";
 
 const weather_router = express();
+weather_router.use(bodyParser.json());
 //weather_router.use(bodyParser.urlencoded({ extended: false }));
 
 //API for the weather data create
 weather_router.post("/weather/create", async (req, res) => {
-    console.log(req);
+    console.log(req.body.message);
     console.log("yeas");
 
     /*
