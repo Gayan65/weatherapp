@@ -28,6 +28,7 @@ weather_router.post("/weather/create", async (req, res) => {
         });
 
         try {
+            //Save the data to DB
             await weather.save().then((weatherData) => {
                 return res.status(200).json({
                     success: true,
