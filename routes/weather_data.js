@@ -5,7 +5,10 @@ const weather_router = express();
 //weather_router.use(bodyParser.urlencoded({ extended: false }));
 
 //API for the weather data create
-weather_router.get("/weather", async (req, res) => {
+weather_router.post("/weather/create", async (req, res) => {
+    console.log(req);
+    console.log("yeas");
+
     /*
     try {
         await Weather.find().then((weather) => {
