@@ -19,6 +19,7 @@ app.get("/", async (req, res) => {
         res.render("index.ejs", {
             temp_live: weather[weather.length - 1].temperature,
             humidity_live: weather[weather.length - 1].humidity,
+            date_live: weather[weather.length - 1].createDate,
             weather_history: weather,
         });
     });
