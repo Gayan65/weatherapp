@@ -9,21 +9,28 @@ weather_router.use(bodyParser.json());
 //API for the weather data create
 weather_router.post("/weather/create", async (req, res) => {
     console.log(req.body.message);
-    console.log("yeas");
+    console.log("Data from mqtt received successfully to create api");
 
     /*
+    const weather = new Weather({
+        temperature: temperature,
+        humidity: humidity,
+        createDate: dateAndTime,
+    });
+
     try {
-        await Weather.find().then((weather) => {
+        await weather.save().then((weatherData) => {
             return res.status(200).json({
                 success: true,
-                allWeatherData: weather,
-            });
+                message: "Weather data successfully saved to DB!",
+                weatherData: weatherData
+            })
         });
     } catch (error) {
         return res.status(400).json({
             success: false,
-            error: error.message,
-        });
+            message: error.message
+        })
     }
     */
 });
